@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/* 1. Default Baseline = Dark Mode */
+:root {
+    --background: #141414;
+    --foreground: #F6F6F6;
+
+    --surface: #081321;
+    --surface-muted: #121922;
+    --text-muted: #cbcbcb;
+
+    --accent-red: #84183C;
+    --accent-orange: #c7833f;
+    --accent-gold: #E6C643;
+    --accent-green: #51843b;
+    --accent-blue: #052346;
+    --accent-purple: #84249a;
+    --black: #141414;
+    --white: #F6F6F6;
+    --gray: #404040;
+}
+
+/* 2. Light Mode Override (Applies when <html class="light"> is active) */
+html.light {
+    --background: #F6F6F6;
+    --foreground: #141414;
+
+    --surface: #e8edf3;
+    --surface-muted: #b2b2b2;
+    --text-muted: #121922;
+
+    --accent-red: #84183C;
+    --accent-orange: #c7833f;
+    --accent-gold: #E6C643;
+    --accent-green: #51843b;
+    --accent-blue: #052346;
+    --accent-purple: #84249a;
+    --black: #141414;
+    --white: #F6F6F6;
+    --gray: #404040;
+}
+
+/* 3. Map Tailwind Theme Tokens */
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-outfit);
+    --font-mono: var(--font-red-hat-mono);
+
+    --color-surface: var(--surface);
+    --color-surface-muted: var(--surface-muted);
+    --color-text-muted: var(--text-muted);
+
+    --color-accent-maroon: var(--accent-red);
+    --color-accent-orange: var(--accent-orange);
+    --color-accent-gold: var(--accent-gold);
+    --color-accent-green: var(--accent-green);
+    --color-accent-blue: var(--accent-blue);
+    --color-accent-purple: var(--accent-purple);
+    --color-white: var(--white);
+    --color-black: var(--black);
+    --color-gray: var(--gray);
+}
+
+/* 4. Base styles */
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), Helvetica, sans-serif;
+    transition: background-color 180ms ease, color 180ms ease;
+}
