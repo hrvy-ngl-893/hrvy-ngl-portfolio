@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, type CSSProperties } from "react";
-import { Moon, Sun, User, SquareArrowRightExit, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Moon, Sun, X } from "lucide-react";
 
-type NavItem = {
+export type NavItem = {
     href: string;
     label: string;
 };
@@ -22,7 +22,6 @@ export function Header() {
     const pathname = usePathname();
     const [isDark, setIsDark] = useState(true);
 
-    // On load, read from localStorage or system settings
     useEffect(() => {
         const savedTheme = localStorage.getItem("theme");
 
@@ -64,7 +63,7 @@ export function Header() {
                     <div className="flex items-center gap-3">
                         <button
                             type="button"
-                            className="flex origin-left items-center gap-1 px-3 py-1 text-sm font-bold text-accent-gold transition-all duration-200 ease-out hover:scale-110 md:hidden"
+                            className={`flex origin-left items-center gap-1 border border-foreground/20 rounded-sm text-accent-gold transition-all duration-200 ease-in-out hover:border-accent-gold hover:scale-110 md:hidden ${isMenuOpen ? "p-2" : "px-3 py-1"}`}
                             onClick={() => setIsMenuOpen((current) => !current)}
                         >
                             {isMenuOpen ? (
@@ -81,14 +80,13 @@ export function Header() {
                                     <Link
                                         key={item.href}
                                         href={item.href}
-                                        className={`inline-block origin-left transition-all duration-200 ease-out hover:scale-110 hover:text-accent-gold ${isActive ? "text-accent-gold font-bold" : "text-text-muted"
+                                        className={`inline-block origin-left text-md transition-all duration-200 ease-out hover:scale-110 hover:text-accent-gold ${isActive ? "text-accent-gold font-bold" : "text-text-muted"
                                             }`}
                                     >
                                         {item.label}
                                     </Link>
                                 );
                             })}
-                    
                         </nav>
                     </div>
 
@@ -111,7 +109,7 @@ export function Header() {
                                 <Link
                                     key={item.href}
                                     href={item.href}
-                                    className={`inline-block origin-left text-sm transition-all duration-200 ease-out hover:scale-110 hover:text-accent-gold ${pathname === item.href ? "text-accent-gold font-bold" : "text-text-muted"
+                                    className={`inline-block origin-left text-md transition-all duration-200 ease-out hover:scale-110 hover:text-accent-gold ${pathname === item.href ? "text-accent-gold font-bold" : "text-text-muted"
                                         }`}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
